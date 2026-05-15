@@ -49,3 +49,13 @@ class Student(Person):
 
     def set_general_average(self, updated_general_average):
         self.__general_average = updated_general_average
+
+    # Polymorphism (Method Overriding)
+    def display_information(self):
+        return [
+            self.__student_id,
+            self.get_full_name(),
+            self.__course_name,
+            self.__year_level,
+            self.__general_average
+        ]

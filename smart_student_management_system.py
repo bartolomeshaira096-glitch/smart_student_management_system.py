@@ -117,3 +117,23 @@ class SmartStudentManagementSystem:
             return True
 
         return False
+
+    def delete_student(self, student_id):
+        student_record = self.search_student(student_id)
+
+        if student_record:
+            self.student_records.remove(student_record)
+            self.save_student_records()
+            return True
+
+        return False
+
+    def get_top_student(self):
+        if not self.student_records:
+            return None
+
+        return min(
+            self.student_records,
+            key=lambda student_record:
+            student_record.get_general_average()
+        )

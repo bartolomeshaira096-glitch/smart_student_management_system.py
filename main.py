@@ -92,3 +92,17 @@ class StudentManagementApplication:
             column=1,
             padx=10
         )
+
+        tk.Label(
+            input_frame,
+            text="General Average"
+        ).grid(row=4, column=0)
+
+        self.general_average_entry = tk.Entry(
+            input_frame
+        )
+        self.general_average_entry.grid(
+            row=4,
+            column=1,
+            padx=10
+        )

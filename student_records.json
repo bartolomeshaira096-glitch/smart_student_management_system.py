@@ -1,0 +1,16 @@
+[
+    {
+        "student_id": "2025-00311-MN-0",
+        "full_name": "Jaeiou A. Revenke",
+        "course_name": "Philippine Studies",
+        "year_level": 3,
+        "general_average": 1.75
+    },
+    {
+        "student_id": "2025-04311-MN-0",
+        "full_name": "Shaira Jeanne B. Bartolome",
+        "course_name": "Computer Engineering",
+        "year_level": 1,
+        "general_average": 1.4
+    }
+]

@@ -195,7 +195,7 @@ class StudentManagementApplication:
             self.select_student
         )
 
-     def add_student(self):
+    def add_student(self):
         try:
             self.student_management_system.add_student(
                 self.student_id_entry.get(),
@@ -304,3 +304,79 @@ class StudentManagementApplication:
                 f"Average: "
                 f"{top_student_record.get_general_average()}"
             )
+
+    def refresh_student_table(self):
+        for row_item in (
+            self.student_table.get_children()
+        ):
+            self.student_table.delete(row_item)
+
+        for student_record in (
+            self.student_management_system
+            .get_all_students()
+        ):
+            self.student_table.insert(
+                "",
+                "end",
+                values=(
+                    student_record
+                    .display_information()
+                )
+            )
+
+    def clear_input_fields(self):
+        self.student_id_entry.delete(0, tk.END)
+        self.full_name_entry.delete(0, tk.END)
+        self.course_name_entry.delete(0, tk.END)
+        self.year_level_entry.delete(0, tk.END)
+        self.general_average_entry.delete(0, tk.END)
+
+    def select_student(self, event_object):
+        selected_item = (
+            self.student_table.focus()
+        )
+
+        if selected_item:
+            selected_values = (
+                self.student_table.item(
+                    selected_item,
+                    "values"
+                )
+            )
+
+            self.clear_input_fields()
+
+            self.student_id_entry.insert(
+                0,
+                selected_values[0]
+            )
+            self.full_name_entry.insert(
+                0,
+                selected_values[1]
+            )
+            self.course_name_entry.insert(
+                0,
+                selected_values[2]
+            )
+            self.year_level_entry.insert(
+                0,
+                selected_values[3]
+            )
+            self.general_average_entry.insert(
+                0,
+                selected_values[4]
+            )
+
+
+def main():
+    application_window = tk.Tk()
+
+    StudentManagementApplication(
+        application_window
+    )
+
+    application_window.mainloop()
+
+
+if __name__ == "__main__":
+    main()

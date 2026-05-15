@@ -194,3 +194,29 @@ class StudentManagementApplication:
             "<<TreeviewSelect>>",
             self.select_student
         )
+
+     def add_student(self):
+        try:
+            self.student_management_system.add_student(
+                self.student_id_entry.get(),
+                self.full_name_entry.get(),
+                self.course_name_entry.get(),
+                int(self.year_level_entry.get()),
+                float(
+                    self.general_average_entry.get()
+                )
+            )
+
+            self.refresh_student_table()
+            self.clear_input_fields()
+
+            messagebox.showinfo(
+                "Success",
+                "Student added successfully!"
+            )
+
+        except ValueError:
+            messagebox.showerror(
+                "Error",
+                "Please enter valid values."
+            )

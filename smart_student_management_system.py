@@ -84,3 +84,36 @@ class SmartStudentManagementSystem:
 
         self.student_records.append(new_student)
         self.save_student_records()
+    
+    def get_all_students(self):
+        return self.student_records
+
+    def search_student(self, student_id):
+        for student_record in self.student_records:
+            if student_record.get_student_id() == student_id:
+                return student_record
+            
+        return None
+
+    def update_student(
+        self,
+        student_id,
+        full_name,
+        course_name,
+        year_level,
+        general_average
+    ):
+        student_record = self.search_student(student_id)
+
+        if student_record:
+            student_record.set_full_name(full_name)
+            student_record.set_course_name(course_name)
+            student_record.set_year_level(year_level)
+            student_record.set_general_average(
+                general_average
+            )
+
+            self.save_student_records()
+            return True
+
+        return False

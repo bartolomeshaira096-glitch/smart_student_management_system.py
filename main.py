@@ -64,7 +64,7 @@ class StudentManagementApplication:
             padx=10
         )
 
-         tk.Label(
+        tk.Label(
             input_frame,
             text="Course Name"
         ).grid(row=2, column=0)
@@ -106,3 +106,47 @@ class StudentManagementApplication:
             column=1,
             padx=10
         )
+
+    def create_buttons(self):
+        button_frame = tk.Frame(
+            self.application_window
+        )
+        button_frame.pack(pady=10)
+
+        tk.Button(
+            button_frame,
+            text="Add Student",
+            command=self.add_student
+        ).grid(row=0, column=0, padx=5)
+
+        tk.Button(
+            button_frame,
+            text="Update Student",
+            command=self.update_student
+        ).grid(row=0, column=1, padx=5)
+
+        tk.Button(
+            button_frame,
+            text="Delete Student",
+            command=self.delete_student
+        ).grid(row=0, column=2, padx=5)
+
+        tk.Button(
+            button_frame,
+            text="Search Student",
+            command=self.search_student
+        ).grid(row=0, column=3, padx=5)
+
+        tk.Button(
+            button_frame,
+            text="Top Student",
+            command=self.display_top_student
+        ).grid(row=0, column=4, padx=5)
+
+        tk.Button(
+            button_frame,
+            text="Clear Fields",
+            command=self.clear_input_fields
+        ).grid(row=0, column=5, padx=5)
+
+

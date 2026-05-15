@@ -258,3 +258,49 @@ class StudentManagementApplication:
                 "Success",
                 "Student deleted successfully!"
             )
+    
+    def search_student(self):
+        student_record = (
+            self.student_management_system
+            .search_student(
+                self.student_id_entry.get()
+            )
+        )
+
+        if student_record:
+            self.clear_input_fields()
+
+            self.student_id_entry.insert(
+                0,
+                student_record.get_student_id()
+            )
+            self.full_name_entry.insert(
+                0,
+                student_record.get_full_name()
+            )
+            self.course_name_entry.insert(
+                0,
+                student_record.get_course_name()
+            )
+            self.year_level_entry.insert(
+                0,
+                student_record.get_year_level()
+            )
+            self.general_average_entry.insert(
+                0,
+                student_record.get_general_average()
+            )
+
+    def display_top_student(self):
+        top_student_record = (
+            self.student_management_system
+            .get_top_student()
+        )
+
+        if top_student_record:
+            messagebox.showinfo(
+                "Top Student",
+                f"{top_student_record.get_full_name()}\n"
+                f"Average: "
+                f"{top_student_record.get_general_average()}"
+            )

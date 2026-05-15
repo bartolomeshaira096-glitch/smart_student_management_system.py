@@ -137,3 +137,42 @@ class SmartStudentManagementSystem:
             key=lambda student_record:
             student_record.get_general_average()
         )
+    
+    def save_student_records(self):
+        student_data = []
+
+        for student_record in self.student_records:
+            student_data.append({
+                "student_id": student_record.get_student_id(),
+                "full_name": student_record.get_full_name(),
+                "course_name": student_record.get_course_name(),
+                "year_level": student_record.get_year_level(),
+                "general_average": (
+                    student_record.get_general_average()
+                )
+            })
+
+        with open(self.file_name, "w") as file_handler:
+            json.dump(student_data, file_handler, indent=4)
+
+    def load_student_records(self):
+        try:
+            with open(self.file_name, "r") as file_handler:
+                student_data = json.load(file_handler)
+
+            for student_information in student_data:
+                loaded_student = Student(
+                    student_information["student_id"],
+                    student_information["full_name"],
+                    student_information["course_name"],
+                    student_information["year_level"],
+                    student_information[
+                        "general_average"
+                    ]
+                )
+                self.student_records.append(
+                    loaded_student
+                )
+
+        except FileNotFoundError:
+            pass

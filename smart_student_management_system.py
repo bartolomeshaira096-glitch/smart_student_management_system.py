@@ -59,3 +59,28 @@ class Student(Person):
             self.__year_level,
             self.__general_average
         ]
+    
+class SmartStudentManagementSystem:
+    def __init__(self):
+        self.student_records = []
+        self.file_name = "student_records.json"
+        self.load_student_records()
+
+    def add_student(
+        self,
+        student_id,
+        full_name,
+        course_name,
+        year_level,
+        general_average
+    ):
+        new_student = Student(
+            student_id,
+            full_name,
+            course_name,
+            year_level,
+            general_average
+        )
+
+        self.student_records.append(new_student)
+        self.save_student_records()

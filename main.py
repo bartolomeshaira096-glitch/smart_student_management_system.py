@@ -63,3 +63,32 @@ class StudentManagementApplication:
             column=1,
             padx=10
         )
+
+         tk.Label(
+            input_frame,
+            text="Course Name"
+        ).grid(row=2, column=0)
+
+        self.course_name_entry = tk.Entry(
+            input_frame,
+            width=30
+        )
+        self.course_name_entry.grid(
+            row=2,
+            column=1,
+            padx=10
+        )
+
+        tk.Label(
+            input_frame,
+            text="Year Level"
+        ).grid(row=3, column=0)
+
+        self.year_level_entry = tk.Entry(
+            input_frame
+        )
+        self.year_level_entry.grid(
+            row=3,
+            column=1,
+            padx=10
+        )

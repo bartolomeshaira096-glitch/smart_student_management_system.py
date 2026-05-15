@@ -220,3 +220,41 @@ class StudentManagementApplication:
                 "Error",
                 "Please enter valid values."
             )
+    
+    def update_student(self):
+        success = (
+            self.student_management_system
+            .update_student(
+                self.student_id_entry.get(),
+                self.full_name_entry.get(),
+                self.course_name_entry.get(),
+                int(self.year_level_entry.get()),
+                float(
+                    self.general_average_entry.get()
+                )
+            )
+        )
+
+        if success:
+            self.refresh_student_table()
+            messagebox.showinfo(
+                "Success",
+                "Student updated successfully!"
+            )
+
+    def delete_student(self):
+        success = (
+            self.student_management_system
+            .delete_student(
+                self.student_id_entry.get()
+            )
+        )
+
+        if success:
+            self.refresh_student_table()
+            self.clear_input_fields()
+
+            messagebox.showinfo(
+                "Success",
+                "Student deleted successfully!"
+            )

@@ -149,4 +149,48 @@ class StudentManagementApplication:
             command=self.clear_input_fields
         ).grid(row=0, column=5, padx=5)
 
+    def create_student_table(self):
+        self.student_table = ttk.Treeview(
+            self.application_window,
+            columns=(
+                "student_id",
+                "full_name",
+                "course_name",
+                "year_level",
+                "general_average"
+            ),
+            show="headings"
+        )
 
+        self.student_table.heading(
+            "student_id",
+            text="Student ID"
+        )
+        self.student_table.heading(
+            "full_name",
+            text="Full Name"
+        )
+        self.student_table.heading(
+            "course_name",
+            text="Course"
+        )
+        self.student_table.heading(
+            "year_level",
+            text="Year Level"
+        )
+        self.student_table.heading(
+            "general_average",
+            text="General Average"
+        )
+
+        self.student_table.pack(
+            fill="both",
+            expand=True,
+            padx=10,
+            pady=10
+        )
+
+        self.student_table.bind(
+            "<<TreeviewSelect>>",
+            self.select_student
+        )

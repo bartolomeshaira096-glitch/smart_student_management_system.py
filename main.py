@@ -28,4 +28,38 @@ class StudentManagementApplication:
         self.create_student_table()
         self.refresh_student_table()
 
-        
+    
+    def create_input_fields(self):
+        input_frame = tk.Frame(
+            self.application_window
+        )
+        input_frame.pack(pady=10)
+
+        tk.Label(
+            input_frame,
+            text="Student ID"
+        ).grid(row=0, column=0)
+
+        self.student_id_entry = tk.Entry(
+            input_frame
+        )
+        self.student_id_entry.grid(
+            row=0,
+            column=1,
+            padx=10
+        )
+
+        tk.Label(
+            input_frame,
+            text="Full Name"
+        ).grid(row=1, column=0)
+
+        self.full_name_entry = tk.Entry(
+            input_frame,
+            width=30
+        )
+        self.full_name_entry.grid(
+            row=1,
+            column=1,
+            padx=10
+        )
